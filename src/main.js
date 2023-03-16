@@ -1,8 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import "primevue/resources/themes/lara-light-indigo/theme.css";     
+import "bootstrap/dist/css/bootstrap.min.css"
 
-
-createApp(App).mount('#app')
-
-
+createApp(App)
+  .mount('#app')
