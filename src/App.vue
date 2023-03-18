@@ -2,7 +2,16 @@
     <br>
     <splitpanes class="default-theme" split="vertical">
         <pane>
-            <span>1</span>
+            <span>
+              <div class="card text-bg-dark mb-3" style="height: 100%">
+                <div class="overflow-auto">
+                  <div class="card-header"><h3>Question Name</h3></div>
+                  <div class="card-body">
+                    <p class="card-text">Some quicd title and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+              </div>
+            </div>
+            </span>
         </pane>
         <pane>
             <splitpanes horizontal>
@@ -28,20 +37,26 @@
                       @blur="log('blur', $event)"
                   />
                 </pane>
-                <pane size = 30 id="bottom_left_plane">
-                  <div id="submit_buttom">
+                <pane size=30 id="bottom_left_plane">
+                  <!--RIGHT BOTTOM CARD-->
+                  <div class="card text-bg-secondary mb-3" style="height: 80%">
+                    <div class="overflow-auto">
+                      <div class="card-header">Header</div>
+                      <div class="card-body">
+                        <p class="card-text">Some quicd title and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                  </div>
+                  </div>
+                  <!--RIGHT BOTTOM BUTTON-->
+                  <div id="submit_buttom" type="button" class="btn btn-outline-success" style="height: 20%">
                     <form v-on:submit.prevent="onSubmit">
-                          <button>Submit Code</button>
+                          <button >Submit Code</button>
                     </form>
-                    <button type="button" class="btn btn-success">Success</button>
-
                   </div>
                 </pane>
             </splitpanes>
         </pane>
     </splitpanes>
-   <button type="button" class="btn btn-warning">Warning</button>
-
 </template>
 
 <script>
