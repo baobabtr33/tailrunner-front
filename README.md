@@ -23,3 +23,7 @@ yarn lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 # tailrunner-front
+
+bootstrap5
+splitpane
+codemirror 

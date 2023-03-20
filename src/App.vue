@@ -5,9 +5,9 @@
             <span>
               <div class="card text-bg-dark mb-3" style="height: 100%">
                 <div class="overflow-auto">
-                  <div class="card-header"><h3>Question Name</h3></div>
+                  <div class="card-header"><h3>{{ question_info.title }}</h3></div>
                   <div class="card-body">
-                    <p class="card-text">Some quicd title and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">{{ question_info.question_content }}</p>
                   </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
                   <!--RIGHT BOTTOM CARD-->
                   <div class="card text-bg-secondary mb-3" style="height: 80%">
                     <div class="overflow-auto">
-                      <div class="card-header">Header</div>
+                      <div class="card-header">Terminal Output</div>
                       <div class="card-body">
                         <p class="card-text">Some quicd title and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make uptitle and make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up tome quick example text to build on the card title and make up the bulk of the card's content.</p>
                       </div>
@@ -57,6 +57,9 @@
             </splitpanes>
         </pane>
     </splitpanes>
+    <div id="app">
+      {{ question_info }}
+     </div>
 </template>
 
 <script>
@@ -66,6 +69,7 @@ import { Codemirror } from 'vue-codemirror'
 import { python } from '@codemirror/lang-python'
 import { oneDark } from '@codemirror/theme-one-dark'
 import 'splitpanes/dist/splitpanes.css'
+import axios from 'axios'
 
 
 export default defineComponent({
@@ -78,7 +82,8 @@ export default defineComponent({
     data(){
         return{
             selected: '',
-            language: 'Python'
+            language: 'Python',
+            question_info: {},
         }
     },
     setup() {
@@ -98,6 +103,11 @@ export default defineComponent({
         handleReady,
         log: console.log,
       }
+    },
+    beforeMount () {
+      axios
+        .get('/questions/?format=json')
+        .then(response => (this.question_info = response.data))
     },
     methods: {
       onSubmit() {
