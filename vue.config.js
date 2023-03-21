@@ -5,6 +5,15 @@ module.exports = {
 		}
   },
   devServer:{
-    proxy: 'http://127.0.0.1:8000'
+    proxy: {
+      '/django':{
+        target: 'http://127.0.0.1:8000',
+        pathRewrite: {'^/django' : ''}
+      },
+      '/fast': {
+        target: 'http://127.0.0.1:9000',
+        pathRewrite: {'^/fast' : ''}
+      } 
+    }
   }
 }
