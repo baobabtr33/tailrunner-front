@@ -6,9 +6,9 @@ module.exports = {
   },
   devServer:{
     proxy: {
-      '/django':{
-        target: 'http://127.0.0.1:8000',
-        pathRewrite: {'^/django' : ''}
+      '/questionServer':{
+        target: 'http://127.0.0.1:10000',
+        pathRewrite: {'^/questionServer' : ''}
       },
       '/fast': {
         target: 'http://127.0.0.1:9000',

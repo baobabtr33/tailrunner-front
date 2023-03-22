@@ -5,12 +5,21 @@
             <span>
               <div class="card text-bg-dark mb-3" style="height: 100%">
                 <div class="overflow-auto">
-                  <div class="card-header"><h3>{{ question_info.title }}</h3></div>
+                  <div class="card-header"><h2>{{ question_info.title }}</h2></div>
                   <div class="card-body">
                     <p class="card-text">{{ question_info.question_content }}</p>
+                    <!-- Testcase Here -->
+                    <br>
+                    <h6> Testcase 1: </h6>
+                    <div> &nbsp;&nbsp;Case: {{ question_info.question_example_one_test }} </div>
+                    <div> &nbsp;&nbsp;answer: {{ question_info.question_example_one_answer }} </div>
+                    <br>
+                    <h6> Testcase 2: </h6>
+                    <div> &nbsp;&nbsp;Case: {{ question_info.question_example_two_test }} </div>
+                    <div> &nbsp;&nbsp;nswer: {{ question_info.question_example_two_answer }} </div>
                   </div>
+                </div>
               </div>
-            </div>
             </span>
         </pane>
         <pane>
@@ -74,18 +83,16 @@
                   </div>
 
                   <!--RIGHT BOTTOM BUTTON-->
-                  <div id="submit_buttom" type="button" class="btn btn-outline-success" style="height: 20%">
-                    <form v-on:submit.prevent="onSubmit">
-                          <button >Submit Code</button>
-                    </form>
-                  </div>
+                  <form v-on:submit.prevent="onSubmit">
+                        <button id="submit_buttom" class="btn btn-outline-success" style="height: 20%">Submit Code</button>
+                  </form>
                 </pane>
             </splitpanes>
         </pane>
     </splitpanes>
-    <div id="app">
+    <div>
       {{ question_info }}
-     </div>
+    </div>
 </template>
 
 <script>
@@ -132,16 +139,15 @@ export default defineComponent({
         log: console.log,
       }
     },
-    beforeMount () {
-      axios
-        .get('/django/questions/?format=json')
-        .then(response => (this.question_info = response.data))
+    async beforeMount () {
+      await axios.get('/questionServer/getQuestionInfo/'+this.$route.params.questionId)
+                 .then(response => (this.question_info = response.data));
+      this.code = this.question_info.question_scaffold
     },
     methods: {
       async onSubmit() {
         const response = await axios.post('/fast/'+this.language+'/1', { 
-                                                        code: this.code 
-                                                        });
+                                                        code: this.code});
         this.serverLog = response.data.msg;
         this.testResult = (response.data.passed ? 3 : 2);
         alert("입력한 값은 " + this.code + this.language + " 입니다.");
@@ -154,13 +160,9 @@ export default defineComponent({
 </script>
 
 <style>
+html, body, #app {height: 96%; margin: 0;}
 
-html, body, #app {height: 95%; margin: 0;}
 
-#main {
-  width: 200px;
-  border: 1px dotted black;
-}
 h1 {
   margin: 0;
     display: inline-block;
