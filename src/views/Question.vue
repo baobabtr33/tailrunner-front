@@ -1,6 +1,5 @@
 <template>
-    <br>
-    <splitpanes class="default-theme" split="vertical">
+    <splitpanes class="default-theme" split="vertical" >
         <pane>
             <span>
               <div class="card text-bg-dark mb-3" style="height: 100%">
@@ -90,9 +89,6 @@
             </splitpanes>
         </pane>
     </splitpanes>
-    <div>
-      {{ question_info }}
-    </div>
 </template>
 
 <script>
@@ -160,8 +156,7 @@ export default defineComponent({
 </script>
 
 <style>
-html, body, #app {height: 96%; margin: 0;}
-
+html, body, #app {height: 97%; margin: 0;}
 
 h1 {
   margin: 0;

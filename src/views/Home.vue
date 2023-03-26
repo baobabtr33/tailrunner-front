@@ -1,39 +1,41 @@
 <template>
-  <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link" href="#scrollspyHeading1">First</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#scrollspyHeading2">Second</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-          <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-    <h4 id="scrollspyHeading1">First heading</h4>
-    <p>......</p>
-    <h4 id="scrollspyHeading2">Second heading</h4>
-    <p>...</p>
-    <h4 id="scrollspyHeading3">Third heading</h4>
-    <p>...</p>
-    <h4 id="scrollspyHeading4">Fourth heading</h4>
-    <p>...</p>
-    <h4 id="scrollspyHeading5">Fifth heading</h4>
-    <p>...</p>
-  </div>
+<table class="table table-dark table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">질문</th>
+      <th scope="col">문제유형</th>
+      <th scope="col">Link</th>
+    </tr>
+  </thead>
+  <tbody v-for="question in question_meta" :key="question.id">
+    <tr>
+      <th scope="row"> {{ question.id }} </th>
+      <td>{{ question.title }}</td>
+      <td>{{ question.question_tag }}</td>
+      <td ><router-link :to="'/question/' + question.id">Chase Tail</router-link></td>
+    </tr>
+  </tbody>
+</table>
+
 </template>
+
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Home',
+  data() {
+    return {
+      items: [{ message: 'Foo' }, { message: 'Bar' }],
+      question_meta: {}
+    }
+  },
+  async created () {
+      const response = await axios.get('/questionServer/getQuestionMeta')
+      console.log(response.data.question_meta);
+      this.question_meta = response.data.question_meta
+  },
 };
+
 </script>
