@@ -6,7 +6,13 @@
                 <div class="overflow-auto">
                   <div class="card-header"><h2>{{ question_info.title }}</h2></div>
                   <div class="card-body">
-                    <p class="card-text">{{ question_info.question_content }}</p>
+                    <p class="card-text">
+                      <span
+                        v-for="(line,lineNumber) of question_info.question_content" 
+                        v-bind:key="lineNumber" >
+                        {{ line }}<br/>
+                      </span>
+                    </p>
                     <!-- Testcase Here -->
                     <br>
                     <h6> Testcase 1: </h6>
@@ -27,8 +33,8 @@
                   <div class="inline">Current Language: 
                     <select v-model="language">
                       <option value="Python">Python</option>
-                      <option value="C++">C++</option>
-                      <option value="Java">Java</option>
+                      <!--<option value="C++">C++</option>
+                      <option value="Java">Java</option>-->
                     </select> 
                   </div>
                   <codemirror
@@ -138,17 +144,16 @@ export default defineComponent({
     async beforeMount () {
       await axios.get('/questionServer/getQuestionInfo/'+this.$route.params.questionId)
                  .then(response => (this.question_info = response.data));
-      this.code = this.question_info.question_scaffold
+      this.code = this.question_info.question_scaffold+'\t\t';
+      this.question_info.question_content = this.question_info.question_content.split('\n');
     },
     methods: {
       async onSubmit() {
-        const response = await axios.post('/fast/'+this.language+'/1', { 
+        const response = await axios.post('/fast/'+this.language+'/'+this.$route.params.questionId, { 
                                                         code: this.code});
         this.serverLog = response.data.msg;
         this.testResult = (response.data.passed ? 3 : 2);
-        alert("입력한 값은 " + this.code + this.language + " 입니다.");
         console.log(response);
-        alert(response.data+"/n"+this.$route.params.questionId);
       }
     }
   })
