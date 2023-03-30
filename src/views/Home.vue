@@ -45,3 +45,9 @@ export default {
 };
 
 </script>
+
+<style>
+body{
+  background-color:hsl(0, 4%, 15%);
+}
+</style>
