@@ -27,14 +27,20 @@ export default {
   name: 'Home',
   data() {
     return {
-      items: [{ message: 'Foo' }, { message: 'Bar' }],
       question_meta: {}
     }
   },
   async created () {
-      const response = await axios.get('/questionServer/getQuestionMeta')
+    if (process.env.NODE_ENV == "production"){
+      const response = await axios.get('http://43.201.97.23:10000/getQuestionMeta/')
       console.log(response.data.question_meta);
       this.question_meta = response.data.question_meta
+    }else{
+      const response = await axios.get('http://127.0.0.1:10000/getQuestionMeta',{headers:{"Accept":"application/json, text/plain, /","Content-Type": "multipart/form-data"}
+}).catch(function(error){console.log(error.request, error.config.url)});
+      console.log(response.data);
+      this.question_meta = response.data.question_meta
+    }
   },
 };
 

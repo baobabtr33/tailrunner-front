@@ -27,3 +27,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 bootstrap5
 splitpane
 codemirror 
+
+
+sudo docker build  --platform linux/arm64 -t frontend-vue:0.2 . 
+docker tag frontend-vue:0.2 stevekim01310/frontend-vue:0.2  
+docker push stevekim01310/frontend-vue:0.2
+
+docker pull stevekim01310/frontend-vue:0.3
+docker run --platform linux/arm64 -it -p 80:80 --rm stevekim01310/frontend-vue:0.3

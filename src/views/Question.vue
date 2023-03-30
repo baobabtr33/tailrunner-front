@@ -16,12 +16,15 @@
                     <!-- Testcase Here -->
                     <br>
                     <h6> Testcase 1: </h6>
-                    <div> &nbsp;&nbsp;Case: {{ question_info.question_example_one_test }} </div>
-                    <div> &nbsp;&nbsp;answer: {{ question_info.question_example_one_answer }} </div>
-                    <br>
+                    <pre>
+                      <div> Case: {{ question_info.question_example_one_test }}</div>
+                      <div> Answer: {{ question_info.question_example_one_answer }} <br> Explanation: {{ question_info.question_example_one_explanation }}</div>
+                    </pre>
                     <h6> Testcase 2: </h6>
-                    <div> &nbsp;&nbsp;Case: {{ question_info.question_example_two_test }} </div>
-                    <div> &nbsp;&nbsp;nswer: {{ question_info.question_example_two_answer }} </div>
+                    <pre>
+                      <div> Case: {{ question_info.question_example_two_test }} </div>
+                      <div> Answer: {{ question_info.question_example_two_answer }} <br> Explanation: {{ question_info.question_example_two_explanation }}</div>
+                    </pre>
                   </div>
                 </div>
               </div>
@@ -30,7 +33,7 @@
         <pane>
             <splitpanes horizontal>
                 <pane>
-                  <div class="inline">Current Language: 
+                  <div class="inline">Current Language : 
                     <select v-model="language">
                       <option value="Python">Python</option>
                       <!--<option value="C++">C++</option>
@@ -53,7 +56,7 @@
                 </pane>
                 <pane size=30 id="bottom_left_plane">
                   <!--RIGHT BOTTOM CARD-->
-                  <!--init color-->
+                  <!--color by terminal output-->
                   <div v-if="this.testResult == 1">
                     <div class="card text-bg-secondary mb-3" style="height: 78%">
                       <div class="overflow-auto">
@@ -87,7 +90,7 @@
                     </div>
                   </div>
 
-                  <!--RIGHT BOTTOM BUTTON-->
+                  <!--RIGHT BOTTOM BUTTON -->
                   <form v-on:submit.prevent="onSubmit">
                         <button id="submit_buttom" class="btn btn-outline-success" style="height: 20%">Submit Code</button>
                   </form>
@@ -124,7 +127,7 @@ export default defineComponent({
         }
     },
     setup() {
-      const code = ref(`class Solution:\n    def submitSolution() -> str:\n        `)
+      const code = ref(`class Solution:\n    def submitSolution() -> str:\n`)
       const extensions = [python(), oneDark]
 
       // Codemirror EditorView instance ref
@@ -142,18 +145,35 @@ export default defineComponent({
       }
     },
     async beforeMount () {
-      await axios.get('/questionServer/getQuestionInfo/'+this.$route.params.questionId)
+      if (process.env.NODE_ENV == "production"){
+        await axios.get('http://43.201.97.23:10000/getQuestionInfo/'+this.$route.params.questionId)
                  .then(response => (this.question_info = response.data));
-      this.code = this.question_info.question_scaffold+'\t\t';
-      this.question_info.question_content = this.question_info.question_content.split('\n');
+        this.code = this.question_info.question_scaffold+'        ';
+        this.question_info.question_content = this.question_info.question_content.split('\n');         
+      }else{
+        await axios.get('/getQuestionInfo/'+this.$route.params.questionId)
+                  .then(response => (this.question_info = response.data));
+        this.code = this.question_info.question_scaffold+'        ';
+        this.question_info.question_content = this.question_info.question_content.split('\n');
+      }
     },
+
     methods: {
       async onSubmit() {
-        const response = await axios.post('/fast/'+this.language+'/'+this.$route.params.questionId, { 
-                                                        code: this.code});
-        this.serverLog = response.data.msg;
-        this.testResult = (response.data.passed ? 3 : 2);
-        console.log(response);
+        if (process.env.NODE_ENV == "production"){
+          const response = await axios.post('http://43.201.97.23:9000/fast/'+this.language+'/'+this.$route.params.questionId, { 
+                                                          code: this.code});
+          this.serverLog = response.data.msg;
+          this.testResult = (response.data.passed ? 3 : 2);
+          console.log(response);
+        }else{
+          const response = await axios.post('http://127.0.0.1:9000/fast/'+this.language+'/'+this.$route.params.questionId, { 
+                                                          code: this.code });
+          this.serverLog = response.data.msg;
+          this.testResult = (response.data.passed ? 3 : 2);
+          console.log(response);
+        }
+        
       }
     }
   })

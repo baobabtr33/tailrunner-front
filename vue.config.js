@@ -6,13 +6,17 @@ module.exports = {
   },
   devServer:{
     proxy: {
-      '/questionServer':{
+      '/getQuestionMeta':{
         target: 'http://127.0.0.1:10000',
-        pathRewrite: {'^/questionServer' : ''}
+        changeOrigin: true
+      },
+      '/getQuestionInfo':{
+        target: 'http://127.0.0.1:10000',
+        changeOrigin: true
       },
       '/fast': {
         target: 'http://127.0.0.1:9000',
-        pathRewrite: {'^/fast' : ''}
+        changeOrigin: true
       } 
     }
   }
