@@ -31,7 +31,7 @@
             </span>
         </pane>
         <pane>
-            <splitpanes horizontal>
+            <splitpanes horizontal class="control">
                 <pane>
                   <div class="inline">Current Language : 
                     <select v-model="language">
@@ -69,7 +69,7 @@
                   </div>
 
                   <div v-else-if="this.testResult == 2">
-                    <div class="card text-bg-danger mb-3" style="height: 70%">
+                    <div class="card text-bg-danger mb-3" style="height: 78%">
                       <div class="overflow-auto">
                         <div class="card-header">Terminal Output</div>
                         <div class="card-body">
@@ -199,5 +199,8 @@ h1 {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+.control{
+  background-color:hsl(0, 4%, 15%);
 }
 </style>
