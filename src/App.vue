@@ -18,3 +18,11 @@
     </nav>
   <router-view />
 </template>
+
+<script>
+export default {
+  mounted(){
+    document.title = "Tailrunner"
+  }
+}
+</script>
