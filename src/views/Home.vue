@@ -13,7 +13,7 @@
       <th scope="row"> {{ question.id }} </th>
       <td>{{ question.title }}</td>
       <td>{{ question.question_tag }}</td>
-      <td ><router-link :to="'/question/' + question.id">Chase Tail</router-link></td>
+      <td ><router-link :to="'/question/' + question.id">Chase Tail &#x1F4AB;</router-link></td>
     </tr>
   </tbody>
 </table>

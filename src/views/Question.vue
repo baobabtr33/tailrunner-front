@@ -57,39 +57,40 @@
                 <pane size=30 id="bottom_left_plane">
                   <!--RIGHT BOTTOM CARD-->
                   <!--color by terminal output-->
-                  <div v-if="this.testResult == 1">
-                    <div class="card text-bg-secondary mb-3" style="height: 78%">
-                      <div class="overflow-auto">
-                        <div class="card-header">Terminal Output</div>
-                        <div class="card-body">
-                          <p class="card-text"> {{serverLog}} </p>
+                    <div v-if="this.testResult == 1">
+                      <div class="card text-bg-secondary mb-3" style="height: 78%">
+                        <div class="overflow-auto">
+                          <div class="card-header">Terminal Output</div>
+                            <div class="card-body">
+                              <p class="card-text"> {{serverLog}} </p>
+                            </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div v-else-if="this.testResult == 2">
-                    <div class="card text-bg-danger mb-3" style="height: 78%">
-                      <div class="overflow-auto">
-                        <div class="card-header">Terminal Output</div>
-                        <div class="card-body">
-                          <p class="card-text"> {{serverLog}} </p>
+                    <div v-else-if="this.testResult == 2">
+                      <div class="card text-bg-danger mb-3" style="height: 78%">
+                        <div class="overflow-auto">
+                          <div class="card-header">Terminal Output</div>
+                          <div class="card-body">
+                              <p class="card-text"> <pre> {{serverLog}}</pre></p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div v-else>
-                    <div class="card text-bg-success mb-3" style="height: 78%">
-                      <div class="overflow-auto">
-                        <div class="card-header">Terminal Output</div>
-                        <div class="card-body">
-                          <p class="card-text"> {{serverLog}} </p>
+                    <div v-else>
+                      <div class="card text-bg-success mb-3" style="height: 78%">
+                        <div class="overflow-auto">
+                          <pre>
+                          <div class="card-header">Terminal Output</div>
+                            <div class="card-body">
+                                <p class="card-text"> <pre> {{serverLog}} </pre> </p>
+                            </div>
+                          </pre>
                         </div>
                       </div>
                     </div>
-                  </div>
-
                   <!--RIGHT BOTTOM BUTTON -->
                   <form v-on:submit.prevent="onSubmit">
                         <button id="submit_buttom" class="btn btn-outline-success" style="height: 20%">Submit Code</button>
@@ -169,11 +170,10 @@ export default defineComponent({
         }else{
           const response = await axios.post('http://127.0.0.1:9000/fast/'+this.language+'/'+this.$route.params.questionId, { 
                                                           code: this.code });
-          this.serverLog = response.data.msg;
+          this.serverLog = response.data.msg + (response.data.print_msg ? "\n\n stdout:\n"+response.data.print_msg : '');
           this.testResult = (response.data.passed ? 3 : 2);
           console.log(response);
         }
-        
       }
     }
   })
@@ -202,5 +202,9 @@ h1 {
 }
 .control{
   background-color:hsl(0, 4%, 15%);
+}
+a, pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 </style>
