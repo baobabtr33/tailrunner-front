@@ -82,12 +82,10 @@
                     <div v-else>
                       <div class="card text-bg-success mb-3" style="height: 78%">
                         <div class="overflow-auto">
-                          <pre>
                           <div class="card-header">Terminal Output</div>
                             <div class="card-body">
-                                <p class="card-text"> <pre> {{serverLog}} </pre> </p>
+                                <p class="card-text"> {{serverLog}} </p>
                             </div>
-                          </pre>
                         </div>
                       </div>
                     </div>
@@ -147,7 +145,7 @@ export default defineComponent({
     },
     async beforeMount () {
       if (process.env.NODE_ENV == "production"){
-        await axios.get('http://43.201.97.23:10000/getQuestionInfo/'+this.$route.params.questionId)
+        await axios.get('http://52.79.215.183:10000/getQuestionInfo/'+this.$route.params.questionId)
                  .then(response => (this.question_info = response.data));
         this.code = this.question_info.question_scaffold+'        ';
         this.question_info.question_content = this.question_info.question_content.split('\n');         
@@ -162,7 +160,7 @@ export default defineComponent({
     methods: {
       async onSubmit() {
         if (process.env.NODE_ENV == "production"){
-          const response = await axios.post('http://43.201.97.23:9000/fast/'+this.language+'/'+this.$route.params.questionId, { 
+          const response = await axios.post('http://52.79.215.183:9000/fast/'+this.language+'/'+this.$route.params.questionId, { 
                                                           code: this.code});
           this.serverLog = response.data.msg;
           this.testResult = (response.data.passed ? 3 : 2);

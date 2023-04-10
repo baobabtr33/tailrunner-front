@@ -32,7 +32,7 @@ export default {
   },
   async created () {
     if (process.env.NODE_ENV == "production"){
-      const response = await axios.get('http://43.201.97.23:10000/getQuestionMeta/')
+      const response = await axios.get('http://52.79.215.183:10000/getQuestionMeta/')
       console.log(response.data.question_meta);
       this.question_meta = response.data.question_meta
     }else{
