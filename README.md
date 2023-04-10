@@ -1,37 +1,7 @@
-# frontend
+# Tailrunner rontend
 
-## Project setup
-```
-yarn install
-```
+## 소개
+Tailrunner 프로젝트의 Frontend 소스 코드입니다.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# tailrunner-front
-
-bootstrap5
-splitpane
-codemirror 
-
-
-sudo docker build  --platform linux/arm64 -t frontend-vue:0.8 . 
-docker tag frontend-vue:0.8 stevekim01310/frontend-vue:0.8
-docker push stevekim01310/frontend-vue:0.8
-
-sudo docker pull stevekim01310/frontend-vue:0.8
-sudo docker run --platform linux/arm64 -it -p 80:80 --rm stevekim01310/frontend-vue:0.8
+Vue.js를 활용하여 Frontend 구성을 했고, 이 저장소에 소스 코드를 동기화합니다.
+Dockerfile로 빌드를 실행하며, Github Actions를 통해 CI 파이프라인을 구축했습니다.
