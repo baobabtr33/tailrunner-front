@@ -1,4 +1,4 @@
-# Tailrunner rontend
+# Tailrunner frontend
 [Tailrunner 바로가기](http://tailrunner.run)
 
 ## 소개
