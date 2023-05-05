@@ -22,32 +22,33 @@ Tailrunner는 제 개인 포트폴리오 프로젝트입니다. 알고리즘과 
 ## **📝 포트폴리오 개요**
 
 <img width="100%" alt="메인 페이지" src="https://user-images.githubusercontent.com/59995362/236454341-3c792071-70ba-4b76-b5e3-8693561308bb.png" />
-> **프로젝트:** 개인 포트폴리오 사이트
->
-> **기획 및 제작:** 김정환
->
-> **분류:** 개인 프로젝트
->
-> **제작 기간:** 2023.03 ~ 2023.05
->
-> **주요 기능:** 메인 페이지, 문제풀이 페이지, 백엔드 서비스
->
-> **사용 기술:** Vue.js, Docker, Github Actions, Bootstrap, AWS
->
-> **문의:** stevekim01310@gmail.com
+
+> **프로젝트:** 개인 포트폴리오 사이트  
+> 
+> **기획 및 제작:** 김정환  
+> 
+> **분류:** 개인 프로젝트  
+> 
+> **제작 기간:** 2023.03 ~ 2023.05  
+> 
+> **주요 기능:** 메인 페이지, 문제풀이 페이지, 백엔드 서비스  
+> 
+> **사용 기술:** Vue.js, Docker, Github Actions, Bootstrap, AWS  
+> 
+> **문의:** stevekim01310@gmail.com  
 
 <br />
 
 ## **🛠 기술 및 도구**
 
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=white)  ![GitHub](https://img.shields.io/badge/Github-%23121011.svg?style=flat-square&logo=github&logoColor=white)  ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white)  ![HTML] (https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)  ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=white)  ![GitHub](https://img.shields.io/badge/Github-%23121011.svg?style=flat-square&logo=github&logoColor=white)  ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white)  ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 
 <br /> 
 
 ## **🔗 링크**
-**서비스 링크:** [http://tailrunner.run](http://tailrunner.run)
-**백엔드 문제 API 링크:** [https://github.com/baobabtr33/Tailrunner-QuestionDetails](https://github.com/baobabtr33/Tailrunner-QuestionDetails)
-**백엔드 채점 API 링크:** [https://github.com/baobabtr33/Tailrunner-SolutionTester](https://github.com/baobabtr33/Tailrunner-SolutionTester)
+**서비스 링크:** [http://tailrunner.run](http://tailrunner.run)  
+**백엔드 문제 API 링크:** [https://github.com/baobabtr33/Tailrunner-QuestionDetails](https://github.com/baobabtr33/Tailrunner-QuestionDetails)  
+**백엔드 채점 API 링크:** [https://github.com/baobabtr33/Tailrunner-SolutionTester](https://github.com/baobabtr33/Tailrunner-SolutionTester)  
 
 <br /> 
 
