@@ -46,9 +46,9 @@ Tailrunner는 제 개인 포트폴리오 프로젝트입니다. 알고리즘과 
 <br /> 
 
 ## **🔗 링크**
-**서비스 링크:** [http://tailrunner.run](http://tailrunner.run)  
+**서비스 링크:** [http://tailrunner.run](http://tailrunner.run)
+**백엔드 채점 API 링크:** [https://github.com/baobabtr33/Tailrunner-SolutionTester](https://github.com/baobabtr33/Tailrunner-SolutionTester)
 **백엔드 문제 API 링크:** [https://github.com/baobabtr33/Tailrunner-QuestionDetails](https://github.com/baobabtr33/Tailrunner-QuestionDetails)  
-**백엔드 채점 API 링크:** [https://github.com/baobabtr33/Tailrunner-SolutionTester](https://github.com/baobabtr33/Tailrunner-SolutionTester)  
 
 <br /> 
 
