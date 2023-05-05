@@ -54,13 +54,13 @@ Tailrunner는 제 개인 포트폴리오 프로젝트입니다. 알고리즘과 
 
 ## **👨🏻‍💻 기능 구현**
 
-### **1. 메인 페이지 **
+### **1. 메인 페이지**
 <img width="100%" alt="메인 페이지" src="https://user-images.githubusercontent.com/59995362/236460436-c13c8161-3934-4113-b121-1ce978a91ebe.png" />
 
 - Vue.js로 메인 페이지를 구성하여 원하는 문제를 고를 수 있도록 구성
 - 문제 유형 표시
 
-### **2. 문제 풀이 페이지 **
+### **2. 문제 풀이 페이지**
 <img width="100%" alt="메인 페이지" src="https://user-images.githubusercontent.com/59995362/236460355-00e1d643-150f-4108-9652-04815c2d18b2.png" />
 
 - splitplanes로 문제 부분, 코드 작성 부분, 제출 부분을 구성
