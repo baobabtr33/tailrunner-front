@@ -61,7 +61,7 @@ Tailrunner는 제 개인 포트폴리오 프로젝트입니다. 알고리즘과 
 - 문제 유형 표시
 
 ### **2. 문제 풀이 페이지**
-<img width="100%" alt="메인 페이지" src="https://user-images.githubusercontent.com/59995362/236460355-00e1d643-150f-4108-9652-04815c2d18b2.png" />
+<img width="100%" alt="문제 풀이 페이지" src="https://user-images.githubusercontent.com/59995362/236471933-33284c9b-c877-470f-97ba-f41c871861f3.gif" />
 
 - splitplanes로 문제 부분, 코드 작성 부분, 제출 부분을 구성
 - submit을 누르면 코드가 제출 되고 정답 여부를 반환
